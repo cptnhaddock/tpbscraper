@@ -1,0 +1,116 @@
+@brand-color: #9D6944;
+@front-color: #fff;
+
+.transformY(@y) {
+    -webkit-transform: translateY(@y);
+    -ms-transform: translateY(@y);
+    transform: translateY(@y);
+}
+
+.transition-transform() {
+    -webkit-transition: -webkit-transform 2s ease, top 2s ease;
+    -ms-transition: -ms-transform 2s ease, top 2s ease;
+    transition: transform 2s ease, top 2s ease;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.container-main {
+    width: 100%;
+    height: 100%;
+    position:relative;
+}
+
+.container-absolute {
+  position: absolute;
+  width: 100%;
+  height: 100%;  
+}
+
+.container-fetch {
+    height: 10%;
+    position: relative;
+    top: 50%;
+    .transformY(-50%);
+    .transition-transform();
+}
+
+.container-fetch.active {
+  .transformY(0);
+  top: 0;
+}
+
+.button-refresh {
+    color: @front-color;
+    background: @brand-color;
+    text-align: center;
+    width: 100%; 
+    height: 100%;   
+    border: 0px;
+    font-weight: bold;
+    outline:none;
+}
+
+.button-refresh:active {
+    background: lighten(@brand-color, 10%);
+}
+
+.container-loading {
+    display: none;
+    position: relative;
+    top: 50%;
+    .transformY(-50%);
+    .transition-transform();
+}
+
+.container-loading.active {
+    display: block;
+}
+
+.loading:after {
+    border-top:10px solid @brand-color;
+    border-bottom:10px solid @brand-color;
+    border-left:10px solid transparent;
+    border-right:10px solid transparent;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    content: "";
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+
+ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul > li {
+    line-height: 1.5em;
+    word-break: break-all;
+}
+
